@@ -1,0 +1,100 @@
+---
+import "../styles/tailwind.css";
+import { navItems, socials } from '../config/nav';
+---
+
+<style>
+    header {
+        display: flex;
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        border-radius: 1rem;
+
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 1rem;
+
+        color: white;
+        font-family: Murecho;
+    }
+    
+    .logo-text strong {
+        font-size: 1.75rem;
+    }
+    
+    .logo-text small {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .logo img {
+        height: 64px;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        color: #AFAFAF;
+    }
+
+    .socials {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .socials a {
+        color: white;
+        transition: color 0.2s;
+    }
+
+    .socials a:hover {
+        color: #00bfff;
+    }
+</style>
+
+<header>
+    <div class="logo">
+        <img src="/logo.png" alt="Aeolus Racing Logo" />
+        <div class="logo-text">
+            <strong>Aeolus Racing</strong><br />
+            <small>IITH MOTORSPORT CLUB</small>
+        </div>
+    </div>
+
+    <nav class="nav-links">
+        {navItems.map((item) => <a href={item.href}>{item.name}</a>)}
+        <div class="socials">
+            {socials.map((item) => {
+                return (
+                    <a href={item.href} target="_blank">
+                        <item.icon />
+                    </a>
+                );
+            })}
+        </div>
+    </nav>
+</header>

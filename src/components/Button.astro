@@ -1,0 +1,27 @@
+---
+interface Props {
+  variant?: 'solid' | 'outline';
+  href?: string;
+  onClick?: () => void;
+  class?: string;
+}
+
+const { variant = 'solid', href, onClick, class: className } = Astro.props;
+
+const baseClasses = "flex items-center justify-center flex-auto font-inter text-lg font-bold leading-none m-0 outline-none px-4 py-4 text-center no-underline transition-shadow whitespace-nowrap border-0 select-none touch-manipulation rounded-xl";
+
+const solidClasses = "bg-white text-black hover:shadow-[0_0_0_3px_#121212,transparent_0_0_0_0]";
+const outlineClasses = "bg-black shadow-[0_0_0_3px_#AFAFAF,transparent_0_0_0_0] hover:shadow-[0_0_0_3px_#FFFFFF,transparent_0_0_0_0]";
+
+const variantClasses = variant === 'solid' ? solidClasses : outlineClasses;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class={`${baseClasses} ${variantClasses} ${className}`}
+  {...href && { href }}
+  {...onClick && { onClick }}
+>
+  <slot />
+</Tag>

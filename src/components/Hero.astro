@@ -1,0 +1,51 @@
+---
+import Button from "./Button.astro";
+---
+<style>
+.car-trail {
+   position: absolute;
+   bottom: 1.75rem;
+   right: 8rem;
+   height: 0.75rem;
+   width: 100vw;
+   background: linear-gradient(to left, white 30%, transparent);
+   border-radius: 9999px;
+   z-index: 0;
+   opacity: 0.8;
+ }
+ 
+.hero-section{
+    font-family: Murecho, sans-serif;
+}
+</style>
+
+<section class="hero-section flex flex-col md:flex-row justify-between h-[100vh] items-center px-8 md:px-20 py-16 text-white bg-black min-h-[80vh] overflow-hidden">
+  <div class="w-full md:w-1/2 flex justify-center md:justify-start">
+    <img
+      src="/IITH-RACING CAR.png"
+      alt="Aeolus Car"
+      class="max-w-[90%] md:max-w-[85%] object-contain drop-shadow-xl"
+    />
+  </div>
+
+  <div class="w-full md:w-1/2 mt-10 md:mt-0 text-center md:text-left">
+    <h1 class="text-8xl md:text-7xl font-extrabold mb-4">
+      Aeolus Racing
+    </h1>
+    <p class="text-lg md:text-3xl font-light mb-6">
+      Engineering Speed. Racing Innovation.
+    </p>
+    <div class="w-128 flex justify-center md:justify-start gap-4">
+        <Button variant="outline">Meet the Team</Button>
+        <Button variant="solid">Contact Us</Button>
+        
+    </div>
+  </div>
+
+    <div class="car-trail"></div>
+      <img
+        src="/f1car.png"
+        alt="Formula car"
+        class="absolute bottom-[0] right-4 w-64 md:w-96 opacity-90 pointer-events-none select-none"
+    />
+</section>
