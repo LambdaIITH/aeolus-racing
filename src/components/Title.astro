@@ -1,0 +1,67 @@
+---
+// Title.astro
+interface Props {
+    text: string;
+    class?: string;
+}
+
+const { text, class: className = "" } = Astro.props;
+---
+
+<h2 class={`title ${className}`} data-animate-title>
+    {text}
+</h2>
+
+<style>
+    .title {
+        color: #fff;
+        text-shadow: 4px 4px 4px rgba(255, 0, 0, 0.8);
+        font-family: Oxanium;
+        font-size: 3.5rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .title.animate-in {
+        transform: translateY(0);
+        opacity: 1;
+        animation: titleGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes titleGlow {
+        from {
+            text-shadow: 4px 4px 4px rgba(255, 0, 0, 0.8);
+        }
+        to {
+            text-shadow: 4px 4px 8px rgba(255, 0, 0, 1), 0 0 20px rgba(255, 0, 0, 0.6);
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof IntersectionObserver !== "undefined") {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("animate-in");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.3,
+                    rootMargin: "0px 0px -50px 0px",
+                }
+            );
+
+            const titles = document.querySelectorAll("[data-animate-title]");
+            titles.forEach(title => observer.observe(title));
+        }
+    });
+</script>
