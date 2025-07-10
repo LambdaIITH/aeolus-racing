@@ -259,7 +259,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Small Mobile Styles */
     @media (max-width: 480px) {
         .hero-section {
             padding: 0.75rem;
@@ -299,7 +298,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Tablet Styles */
     @media (min-width: 769px) and (max-width: 1024px) {
         .hero-section {
             padding: 1.5rem 2rem;
@@ -324,7 +322,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Large Screen Styles */
     @media (min-width: 1025px) {
         .hero-section {
             padding: 4rem 5rem;
@@ -348,7 +345,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Animation for hero elements */
     .hero-image img {
         animation: fadeInLeft 1s ease-out;
     }
@@ -398,7 +394,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Improved F1 Car Speed Animation */
     @keyframes f1CarSpeed {
         0% {
             transform: translateX(-120vw) scale(0.4);
@@ -438,7 +433,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Improved Car Trail Animation */
     @keyframes carTrailAnimation {
         0% {
             transform: translateX(-120vw);
@@ -478,84 +472,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Exhaust Visibility Animation */
-    @keyframes exhaustVisibility {
-        0% {
-            opacity: 0;
-        }
-        30% {
-            opacity: 0;
-        }
-        45% {
-            opacity: 0.8;
-        }
-        75% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 0.6;
-        }
-        100% {
-            opacity: 0.3;
-        }
-    }
-
-    /* Enhanced Exhaust Puff Animation */
-    @keyframes exhaustPuff {
-        0% {
-            transform: translateX(0) scale(0.8);
-            opacity: 0.9;
-            background: rgba(255, 255, 255, 0.7);
-        }
-        20% {
-            transform: translateX(-15px) scale(1);
-            opacity: 0.7;
-            background: rgba(220, 220, 220, 0.6);
-        }
-        40% {
-            transform: translateX(-35px) scale(1.3);
-            opacity: 0.5;
-            background: rgba(180, 180, 180, 0.4);
-        }
-        60% {
-            transform: translateX(-55px) scale(1.6);
-            opacity: 0.3;
-            background: rgba(140, 140, 140, 0.3);
-        }
-        80% {
-            transform: translateX(-75px) scale(1.9);
-            opacity: 0.15;
-            background: rgba(100, 100, 100, 0.2);
-        }
-        100% {
-            transform: translateX(-95px) scale(2.2);
-            opacity: 0;
-            background: rgba(60, 60, 60, 0.1);
-        }
-    }
-
-    /* Speed Lines Animation */
-    @keyframes speedLinesAnimation {
-        0% {
-            opacity: 0;
-        }
-        30% {
-            opacity: 0;
-        }
-        45% {
-            opacity: 0.6;
-        }
-        75% {
-            opacity: 0.8;
-        }
-        90% {
-            opacity: 0.4;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-
     @keyframes speedLineMove {
         0% {
             transform: translateX(0);
@@ -567,7 +483,6 @@ import Button from "./Button.astro";
         }
     }
 
-    /* Mobile Versions */
     @keyframes f1CarSpeedMobile {
         0% {
             transform: translateX(-110vw) scale(0.5);
@@ -621,42 +536,6 @@ import Button from "./Button.astro";
             opacity: 0;
         }
     }
-
-    @keyframes exhaustVisibilityMobile {
-        0% {
-            opacity: 0;
-        }
-        40% {
-            opacity: 0;
-        }
-        60% {
-            opacity: 0.7;
-        }
-        80% {
-            opacity: 0.8;
-        }
-        100% {
-            opacity: 0.4;
-        }
-    }
-
-    @keyframes speedLinesAnimationMobile {
-        0% {
-            opacity: 0;
-        }
-        40% {
-            opacity: 0;
-        }
-        60% {
-            opacity: 0.5;
-        }
-        80% {
-            opacity: 0.7;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
 </style>
 
 <section
@@ -687,26 +566,6 @@ import Button from "./Button.astro";
         </div>
     </div>
 
-    <!-- Enhanced Animation Elements -->
     <div class="car-trail"></div>
-
-    <!-- Speed Lines for Motion Effect -->
-    <div class="speed-lines">
-        <div class="speed-line"></div>
-        <div class="speed-line"></div>
-        <div class="speed-line"></div>
-        <div class="speed-line"></div>
-    </div>
-
-    <!-- Enhanced F1 Car with Exhaust Animation -->
-    <div class="car-exhaust">
-        <div class="exhaust-puff"></div>
-        <div class="exhaust-puff"></div>
-        <div class="exhaust-puff"></div>
-        <div class="exhaust-puff"></div>
-        <div class="exhaust-puff"></div>
-        <div class="exhaust-puff"></div>
-    </div>
-
     <img src="/f1car.png" alt="Formula car" class="f1-car" />
 </section>
