@@ -5,20 +5,29 @@ import Button from "./Button.astro";
 <style>
     .car-trail {
         position: absolute;
-        bottom: 1.75rem;
+        bottom: 2rem;
         right: 8rem;
         height: 0.75rem;
         width: 100vw;
-        background: linear-gradient(to left, white 30%, transparent);
+        background: linear-gradient(
+            to left,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.6) 20%,
+            rgba(255, 255, 255, 0.3) 40%,
+            transparent 60%
+        );
         border-radius: 9999px;
         z-index: 0;
-        opacity: 0.8;
-        transition: all 0.3s ease;
+        opacity: 0;
+        filter: blur(1px);
+        animation: carTrailAnimation 6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            forwards;
     }
 
     .hero-section {
         font-family: Murecho, sans-serif;
         position: relative;
+        overflow: hidden;
     }
 
     .hero-content {
@@ -36,57 +45,111 @@ import Button from "./Button.astro";
         bottom: 0;
         right: 1rem;
         width: 16rem;
-        opacity: 0.9;
+        opacity: 0;
         pointer-events: none;
         user-select: none;
         z-index: 0;
-        transition: all 0.3s ease;
-        animation: f1CarSpeed 4s ease-in;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        animation: f1CarSpeed 6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
     }
 
     .car-exhaust {
         position: absolute;
         bottom: 2rem;
         right: 17rem;
-        width: 100px;
-        height: 30px;
+        width: 120px;
+        height: 40px;
         z-index: -1;
         pointer-events: none;
         opacity: 0;
+        animation: exhaustVisibility 6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            forwards;
     }
 
     .exhaust-puff {
         position: absolute;
-        width: 8px;
-        height: 8px;
-        background: rgba(255, 255, 255, 0.6);
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.7);
         border-radius: 50%;
-        animation: exhaustPuff 0.8s ease-out;
+        filter: blur(0.5px);
+        animation: exhaustPuff 1.2s ease-out infinite;
     }
 
     .exhaust-puff:nth-child(1) {
         animation-delay: 0s;
         left: 0;
     }
-
     .exhaust-puff:nth-child(2) {
-        animation-delay: 0.1s;
-        left: 10px;
+        animation-delay: 0.15s;
+        left: 15px;
     }
-
     .exhaust-puff:nth-child(3) {
-        animation-delay: 0.2s;
-        left: 20px;
-    }
-
-    .exhaust-puff:nth-child(4) {
         animation-delay: 0.3s;
         left: 30px;
     }
-
+    .exhaust-puff:nth-child(4) {
+        animation-delay: 0.45s;
+        left: 45px;
+    }
     .exhaust-puff:nth-child(5) {
-        animation-delay: 0.4s;
-        left: 40px;
+        animation-delay: 0.6s;
+        left: 60px;
+    }
+    .exhaust-puff:nth-child(6) {
+        animation-delay: 0.75s;
+        left: 75px;
+    }
+
+    /* Speed lines for additional motion effect */
+    .speed-lines {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -2;
+        opacity: 0;
+        animation: speedLinesAnimation 6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+            forwards;
+    }
+
+    .speed-line {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(
+            to left,
+            rgba(255, 255, 255, 0.6),
+            transparent
+        );
+        border-radius: 1px;
+        animation: speedLineMove 0.8s ease-out infinite;
+    }
+
+    .speed-line:nth-child(1) {
+        width: 60px;
+        bottom: 3rem;
+        right: 18rem;
+        animation-delay: 0s;
+    }
+    .speed-line:nth-child(2) {
+        width: 40px;
+        bottom: 2.5rem;
+        right: 19rem;
+        animation-delay: 0.1s;
+    }
+    .speed-line:nth-child(3) {
+        width: 80px;
+        bottom: 3.5rem;
+        right: 17rem;
+        animation-delay: 0.2s;
+    }
+    .speed-line:nth-child(4) {
+        width: 50px;
+        bottom: 4rem;
+        right: 18.5rem;
+        animation-delay: 0.3s;
     }
 
     /* Mobile Styles */
@@ -147,26 +210,55 @@ import Button from "./Button.astro";
             bottom: 1rem;
             right: 4rem;
             height: 0.5rem;
-            opacity: 0.6;
+            animation: carTrailAnimationMobile 4s
+                cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         .f1-car {
             width: 12rem;
             right: 0.5rem;
-            opacity: 0.7;
-            animation: f1CarSpeedMobile 3s ease-in;
+            animation: f1CarSpeedMobile 4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+                forwards;
         }
 
         .car-exhaust {
             bottom: 1.5rem;
             right: 12.5rem;
-            width: 60px;
-            height: 20px;
+            width: 80px;
+            height: 25px;
+            animation: exhaustVisibilityMobile 4s
+                cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
 
         .exhaust-puff {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
+        }
+
+        .speed-lines {
+            animation: speedLinesAnimationMobile 4s
+                cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .speed-line:nth-child(1) {
+            width: 40px;
+            bottom: 2rem;
+            right: 13rem;
+        }
+        .speed-line:nth-child(2) {
+            width: 30px;
+            bottom: 1.7rem;
+            right: 14rem;
+        }
+        .speed-line:nth-child(3) {
+            width: 50px;
+            bottom: 2.3rem;
+            right: 12.5rem;
+        }
+        .speed-line:nth-child(4) {
+            width: 35px;
+            bottom: 2.6rem;
+            right: 13.5rem;
         }
     }
 
@@ -195,19 +287,18 @@ import Button from "./Button.astro";
         .f1-car {
             width: 10rem;
             right: 0.25rem;
-            animation: f1CarSpeedMobile 3s ease-in infinite;
         }
 
         .car-exhaust {
             bottom: 1.25rem;
             right: 10.25rem;
-            width: 50px;
-            height: 15px;
+            width: 60px;
+            height: 20px;
         }
 
         .exhaust-puff {
-            width: 4px;
-            height: 4px;
+            width: 5px;
+            height: 5px;
         }
     }
 
@@ -230,6 +321,10 @@ import Button from "./Button.astro";
             width: 20rem;
             right: 2rem;
         }
+
+        .car-exhaust {
+            right: 22rem;
+        }
     }
 
     /* Large Screen Styles */
@@ -249,6 +344,10 @@ import Button from "./Button.astro";
         .f1-car {
             width: 24rem;
             right: 1rem;
+        }
+
+        .car-exhaust {
+            right: 25rem;
         }
     }
 
@@ -302,91 +401,262 @@ import Button from "./Button.astro";
         }
     }
 
-    /* F1 Car Speed Animation - Left to Right */
+    /* Improved F1 Car Speed Animation */
     @keyframes f1CarSpeed {
         0% {
-            transform: translateX(-100vw) scale(0.8);
-            opacity: 0;
-        }
-        10% {
-            transform: translateX(-80vw) scale(0.85);
-            opacity: 0.3;
-        }
-        30% {
-            transform: translateX(-40vw) scale(0.9);
-            opacity: 0.6;
-        }
-        50% {
-            transform: translateX(-20vw) scale(0.95);
-            opacity: 0.8;
-        }
-        70% {
-            transform: translateX(-10vw) scale(1);
-            opacity: 0.9;
-        }
-        90% {
-            transform: translateX(0) scale(1.05);
-            opacity: 1;
-        }
-        100% {
-            transform: translateX(10vw) scale(1.1);
-            opacity: 0;
-        }
-    }
-
-    /* Exhaust Puff Animation */
-    @keyframes exhaustPuff {
-        0% {
-            transform: translateX(0) scale(1);
-            opacity: 0.8;
-            background: rgba(255, 255, 255, 0.6);
-        }
-        25% {
-            transform: translateX(-20px) scale(1.2);
-            opacity: 0.6;
-            background: rgba(200, 200, 200, 0.5);
-        }
-        50% {
-            transform: translateX(-40px) scale(1.5);
-            opacity: 0.4;
-            background: rgba(150, 150, 150, 0.3);
-        }
-        75% {
-            transform: translateX(-60px) scale(1.8);
-            opacity: 0.2;
-            background: rgba(100, 100, 100, 0.2);
-        }
-        100% {
-            transform: translateX(-80px) scale(2);
-            opacity: 0;
-            background: rgba(50, 50, 50, 0.1);
-        }
-    }
-
-    /* Mobile F1 Car Animation - Smaller movement */
-    @keyframes f1CarSpeedMobile {
-        0% {
-            transform: translateX(-100vw) scale(0.8);
+            transform: translateX(-120vw) scale(0.4);
             opacity: 0;
         }
         15% {
-            transform: translateX(-60vw) scale(0.85);
+            transform: translateX(-95vw) scale(0.6);
+            opacity: 0.3;
+        }
+        30% {
+            transform: translateX(-70vw) scale(0.75);
+            opacity: 0.6;
+        }
+        45% {
+            transform: translateX(-45vw) scale(0.85);
+            opacity: 0.8;
+        }
+        60% {
+            transform: translateX(-25vw) scale(0.92);
+            opacity: 0.9;
+        }
+        75% {
+            transform: translateX(-10vw) scale(0.96);
+            opacity: 0.95;
+        }
+        85% {
+            transform: translateX(-3vw) scale(0.98);
+            opacity: 0.98;
+        }
+        95% {
+            transform: translateX(-1vw) scale(0.99);
+            opacity: 0.99;
+        }
+        100% {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    /* Improved Car Trail Animation */
+    @keyframes carTrailAnimation {
+        0% {
+            transform: translateX(-120vw);
+            opacity: 0;
+        }
+        15% {
+            transform: translateX(-95vw);
+            opacity: 0.2;
+        }
+        30% {
+            transform: translateX(-70vw);
+            opacity: 0.4;
+        }
+        45% {
+            transform: translateX(-45vw);
+            opacity: 0.6;
+        }
+        60% {
+            transform: translateX(-25vw);
+            opacity: 0.8;
+        }
+        75% {
+            transform: translateX(-10vw);
+            opacity: 0.9;
+        }
+        85% {
+            transform: translateX(-3vw);
+            opacity: 1;
+        }
+        95% {
+            transform: translateX(-1vw);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    /* Exhaust Visibility Animation */
+    @keyframes exhaustVisibility {
+        0% {
+            opacity: 0;
+        }
+        30% {
+            opacity: 0;
+        }
+        45% {
+            opacity: 0.8;
+        }
+        75% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 0.6;
+        }
+        100% {
+            opacity: 0.3;
+        }
+    }
+
+    /* Enhanced Exhaust Puff Animation */
+    @keyframes exhaustPuff {
+        0% {
+            transform: translateX(0) scale(0.8);
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.7);
+        }
+        20% {
+            transform: translateX(-15px) scale(1);
+            opacity: 0.7;
+            background: rgba(220, 220, 220, 0.6);
+        }
+        40% {
+            transform: translateX(-35px) scale(1.3);
+            opacity: 0.5;
+            background: rgba(180, 180, 180, 0.4);
+        }
+        60% {
+            transform: translateX(-55px) scale(1.6);
+            opacity: 0.3;
+            background: rgba(140, 140, 140, 0.3);
+        }
+        80% {
+            transform: translateX(-75px) scale(1.9);
+            opacity: 0.15;
+            background: rgba(100, 100, 100, 0.2);
+        }
+        100% {
+            transform: translateX(-95px) scale(2.2);
+            opacity: 0;
+            background: rgba(60, 60, 60, 0.1);
+        }
+    }
+
+    /* Speed Lines Animation */
+    @keyframes speedLinesAnimation {
+        0% {
+            opacity: 0;
+        }
+        30% {
+            opacity: 0;
+        }
+        45% {
+            opacity: 0.6;
+        }
+        75% {
+            opacity: 0.8;
+        }
+        90% {
+            opacity: 0.4;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes speedLineMove {
+        0% {
+            transform: translateX(0);
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateX(-100px);
+            opacity: 0;
+        }
+    }
+
+    /* Mobile Versions */
+    @keyframes f1CarSpeedMobile {
+        0% {
+            transform: translateX(-110vw) scale(0.5);
+            opacity: 0;
+        }
+        20% {
+            transform: translateX(-80vw) scale(0.65);
             opacity: 0.4;
         }
         40% {
-            transform: translateX(-30vw) scale(0.9);
+            transform: translateX(-50vw) scale(0.8);
             opacity: 0.7;
         }
         60% {
-            transform: translateX(-15vw) scale(0.95);
+            transform: translateX(-25vw) scale(0.9);
+            opacity: 0.85;
+        }
+        80% {
+            transform: translateX(-8vw) scale(0.95);
+            opacity: 0.95;
+        }
+        100% {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes carTrailAnimationMobile {
+        0% {
+            transform: translateX(-110vw);
+            opacity: 0;
+        }
+        20% {
+            transform: translateX(-80vw);
+            opacity: 0.3;
+        }
+        40% {
+            transform: translateX(-50vw);
+            opacity: 0.6;
+        }
+        60% {
+            transform: translateX(-25vw);
             opacity: 0.8;
         }
         80% {
-            transform: translateX(-5vw) scale(1);
-            opacity: 0.9;
+            transform: translateX(-8vw);
+            opacity: 0.6;
         }
         100% {
-            transform: translateX(5vw) scale(1.05);
+            transform: translateX(0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes exhaustVisibilityMobile {
+        0% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 0;
+        }
+        60% {
+            opacity: 0.7;
+        }
+        80% {
+            opacity: 0.8;
+        }
+        100% {
+            opacity: 0.4;
+        }
+    }
+
+    @keyframes speedLinesAnimationMobile {
+        0% {
+            opacity: 0;
+        }
+        40% {
+            opacity: 0;
+        }
+        60% {
+            opacity: 0.5;
+        }
+        80% {
+            opacity: 0.7;
+        }
+        100% {
             opacity: 0;
         }
     }
@@ -420,10 +690,20 @@ import Button from "./Button.astro";
         </div>
     </div>
 
+    <!-- Enhanced Animation Elements -->
     <div class="car-trail"></div>
 
-    <!-- F1 Car with Exhaust Animation -->
+    <!-- Speed Lines for Motion Effect -->
+    <div class="speed-lines">
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+        <div class="speed-line"></div>
+    </div>
+
+    <!-- Enhanced F1 Car with Exhaust Animation -->
     <div class="car-exhaust">
+        <div class="exhaust-puff"></div>
         <div class="exhaust-puff"></div>
         <div class="exhaust-puff"></div>
         <div class="exhaust-puff"></div>
