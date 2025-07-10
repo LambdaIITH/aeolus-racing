@@ -1,51 +1,435 @@
 ---
 import Button from "./Button.astro";
 ---
+
 <style>
-.car-trail {
-   position: absolute;
-   bottom: 1.75rem;
-   right: 8rem;
-   height: 0.75rem;
-   width: 100vw;
-   background: linear-gradient(to left, white 30%, transparent);
-   border-radius: 9999px;
-   z-index: 0;
-   opacity: 0.8;
- }
- 
-.hero-section{
-    font-family: Murecho, sans-serif;
-}
+    .car-trail {
+        position: absolute;
+        bottom: 1.75rem;
+        right: 8rem;
+        height: 0.75rem;
+        width: 100vw;
+        background: linear-gradient(to left, white 30%, transparent);
+        border-radius: 9999px;
+        z-index: 0;
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    .hero-section {
+        font-family: Murecho, sans-serif;
+        position: relative;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .hero-image {
+        position: relative;
+        z-index: 1;
+    }
+
+    .f1-car {
+        position: absolute;
+        bottom: 0;
+        right: 1rem;
+        width: 16rem;
+        opacity: 0.9;
+        pointer-events: none;
+        user-select: none;
+        z-index: 0;
+        transition: all 0.3s ease;
+        animation: f1CarSpeed 4s ease-in;
+    }
+
+    .car-exhaust {
+        position: absolute;
+        bottom: 2rem;
+        right: 17rem;
+        width: 100px;
+        height: 30px;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .exhaust-puff {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: exhaustPuff 0.8s ease-out;
+    }
+
+    .exhaust-puff:nth-child(1) {
+        animation-delay: 0s;
+        left: 0;
+    }
+
+    .exhaust-puff:nth-child(2) {
+        animation-delay: 0.1s;
+        left: 10px;
+    }
+
+    .exhaust-puff:nth-child(3) {
+        animation-delay: 0.2s;
+        left: 20px;
+    }
+
+    .exhaust-puff:nth-child(4) {
+        animation-delay: 0.3s;
+        left: 30px;
+    }
+
+    .exhaust-puff:nth-child(5) {
+        animation-delay: 0.4s;
+        left: 40px;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+        .hero-section {
+            flex-direction: column;
+            padding: 1rem;
+            min-height: 100vh;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .hero-image {
+            order: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-image img {
+            max-width: 85%;
+            height: auto;
+        }
+
+        .hero-content {
+            order: 2;
+            width: 100%;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .button-container {
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .button-container > * {
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .car-trail {
+            bottom: 1rem;
+            right: 4rem;
+            height: 0.5rem;
+            opacity: 0.6;
+        }
+
+        .f1-car {
+            width: 12rem;
+            right: 0.5rem;
+            opacity: 0.7;
+            animation: f1CarSpeedMobile 3s ease-in;
+        }
+
+        .car-exhaust {
+            bottom: 1.5rem;
+            right: 12.5rem;
+            width: 60px;
+            height: 20px;
+        }
+
+        .exhaust-puff {
+            width: 6px;
+            height: 6px;
+        }
+    }
+
+    /* Small Mobile Styles */
+    @media (max-width: 480px) {
+        .hero-section {
+            padding: 0.75rem;
+            gap: 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .car-trail {
+            bottom: 0.75rem;
+            right: 3rem;
+            height: 0.4rem;
+        }
+
+        .f1-car {
+            width: 10rem;
+            right: 0.25rem;
+            animation: f1CarSpeedMobile 3s ease-in infinite;
+        }
+
+        .car-exhaust {
+            bottom: 1.25rem;
+            right: 10.25rem;
+            width: 50px;
+            height: 15px;
+        }
+
+        .exhaust-puff {
+            width: 4px;
+            height: 4px;
+        }
+    }
+
+    /* Tablet Styles */
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .hero-section {
+            padding: 1.5rem 2rem;
+            gap: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+        }
+
+        .f1-car {
+            width: 20rem;
+            right: 2rem;
+        }
+    }
+
+    /* Large Screen Styles */
+    @media (min-width: 1025px) {
+        .hero-section {
+            padding: 4rem 5rem;
+        }
+
+        .hero-content h1 {
+            font-size: 7rem;
+        }
+
+        .hero-content p {
+            font-size: 1.875rem;
+        }
+
+        .f1-car {
+            width: 24rem;
+            right: 1rem;
+        }
+    }
+
+    /* Animation for hero elements */
+    .hero-image img {
+        animation: fadeInLeft 1s ease-out;
+    }
+
+    .hero-content h1 {
+        animation: fadeInRight 1s ease-out 0.2s both;
+    }
+
+    .hero-content p {
+        animation: fadeInRight 1s ease-out 0.4s both;
+    }
+
+    .button-container {
+        animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* F1 Car Speed Animation - Left to Right */
+    @keyframes f1CarSpeed {
+        0% {
+            transform: translateX(-100vw) scale(0.8);
+            opacity: 0;
+        }
+        10% {
+            transform: translateX(-80vw) scale(0.85);
+            opacity: 0.3;
+        }
+        30% {
+            transform: translateX(-40vw) scale(0.9);
+            opacity: 0.6;
+        }
+        50% {
+            transform: translateX(-20vw) scale(0.95);
+            opacity: 0.8;
+        }
+        70% {
+            transform: translateX(-10vw) scale(1);
+            opacity: 0.9;
+        }
+        90% {
+            transform: translateX(0) scale(1.05);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(10vw) scale(1.1);
+            opacity: 0;
+        }
+    }
+
+    /* Exhaust Puff Animation */
+    @keyframes exhaustPuff {
+        0% {
+            transform: translateX(0) scale(1);
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.6);
+        }
+        25% {
+            transform: translateX(-20px) scale(1.2);
+            opacity: 0.6;
+            background: rgba(200, 200, 200, 0.5);
+        }
+        50% {
+            transform: translateX(-40px) scale(1.5);
+            opacity: 0.4;
+            background: rgba(150, 150, 150, 0.3);
+        }
+        75% {
+            transform: translateX(-60px) scale(1.8);
+            opacity: 0.2;
+            background: rgba(100, 100, 100, 0.2);
+        }
+        100% {
+            transform: translateX(-80px) scale(2);
+            opacity: 0;
+            background: rgba(50, 50, 50, 0.1);
+        }
+    }
+
+    /* Mobile F1 Car Animation - Smaller movement */
+    @keyframes f1CarSpeedMobile {
+        0% {
+            transform: translateX(-100vw) scale(0.8);
+            opacity: 0;
+        }
+        15% {
+            transform: translateX(-60vw) scale(0.85);
+            opacity: 0.4;
+        }
+        40% {
+            transform: translateX(-30vw) scale(0.9);
+            opacity: 0.7;
+        }
+        60% {
+            transform: translateX(-15vw) scale(0.95);
+            opacity: 0.8;
+        }
+        80% {
+            transform: translateX(-5vw) scale(1);
+            opacity: 0.9;
+        }
+        100% {
+            transform: translateX(5vw) scale(1.05);
+            opacity: 0;
+        }
+    }
 </style>
 
-<section class="hero-section flex flex-col md:flex-row justify-between h-[100vh] items-center px-8 md:px-20 py-16 text-white bg-black min-h-[80vh] overflow-hidden">
-  <div class="w-full md:w-1/2 flex justify-center md:justify-start">
-    <img
-      src="/IITH-RACING CAR.png"
-      alt="Aeolus Car"
-      class="max-w-[90%] md:max-w-[85%] object-contain drop-shadow-xl"
-    />
-  </div>
-
-  <div class="w-full md:w-1/2 mt-10 md:mt-0 text-center md:text-left">
-    <h1 class="text-8xl md:text-7xl font-extrabold mb-4">
-      Aeolus Racing
-    </h1>
-    <p class="text-lg md:text-3xl font-light mb-6">
-      Engineering Speed. Racing Innovation.
-    </p>
-    <div class="w-128 flex justify-center md:justify-start gap-4">
-        <Button variant="outline">Meet the Team</Button>
-        <Button variant="solid">Contact Us</Button>
-        
+<section
+    class="hero-section flex flex-col md:flex-row justify-between h-[100vh] items-center text-white bg-black min-h-[80vh] overflow-hidden"
+>
+    <div
+        class="hero-image w-full md:w-1/2 flex justify-center md:justify-start"
+    >
+        <img
+            src="/IITH-RACING CAR.png"
+            alt="Aeolus Car"
+            class="max-w-[90%] md:max-w-[85%] object-contain drop-shadow-xl"
+        />
     </div>
-  </div>
+
+    <div
+        class="hero-content w-full md:w-1/2 mt-10 md:mt-0 text-center md:text-left"
+    >
+        <h1 class="text-8xl md:text-7xl font-extrabold mb-4">Aeolus Racing</h1>
+        <p class="text-lg md:text-3xl font-light mb-6">
+            Engineering Speed. Racing Innovation.
+        </p>
+        <div
+            class="button-container w-128 flex justify-center md:justify-start gap-4"
+        >
+            <Button variant="outline">Meet the Team</Button>
+            <Button variant="solid">Contact Us</Button>
+        </div>
+    </div>
 
     <div class="car-trail"></div>
-      <img
-        src="/f1car.png"
-        alt="Formula car"
-        class="absolute bottom-[0] right-4 w-64 md:w-96 opacity-90 pointer-events-none select-none"
-    />
+
+    <!-- F1 Car with Exhaust Animation -->
+    <div class="car-exhaust">
+        <div class="exhaust-puff"></div>
+        <div class="exhaust-puff"></div>
+        <div class="exhaust-puff"></div>
+        <div class="exhaust-puff"></div>
+        <div class="exhaust-puff"></div>
+    </div>
+
+    <img src="/f1car.png" alt="Formula car" class="f1-car" />
 </section>
