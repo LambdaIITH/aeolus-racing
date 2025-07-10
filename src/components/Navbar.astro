@@ -331,7 +331,7 @@ import { navItems, socials } from "../config/nav";
             {
                 socials.map((item) => {
                     return (
-                        <a href={item.href} target="_blank">
+                        <a href={item.href} target="_blank" aria-label={item.name}>
                             <item.icon />
                         </a>
                     );
