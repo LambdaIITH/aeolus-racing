@@ -1,0 +1,750 @@
+---
+// Team.astro
+import Title from './Title.astro';
+
+const teamData = {
+  leadership: [
+    {
+      name: "Arjun Sharma",
+      role: "Team Captain",
+      department: "Mechanical Engineering",
+      year: "4th Year",
+      image: "/images/team/captain.jpg",
+      bio: "Leading the team with passion for motorsports and innovation in automotive engineering."
+    },
+    {
+      name: "Priya Patel",
+      role: "Technical Lead",
+      department: "Aerospace Engineering", 
+      year: "4th Year",
+      image: "/images/team/tech-lead.jpg",
+      bio: "Overseeing technical development and ensuring engineering excellence across all subsystems."
+    },
+    {
+      name: "Rahul Kumar",
+      role: "Project Manager",
+      department: "Industrial Engineering",
+      year: "3rd Year", 
+      image: "/images/team/pm.jpg",
+      bio: "Coordinating project timelines and managing team operations for optimal performance."
+    }
+  ],
+  subsystems: [
+    {
+      name: "Powertrain",
+      lead: "Vikram Singh",
+      members: [
+        { name: "Vikram Singh", role: "Subsystem Lead", year: "4th Year", image: "/images/1.jpg" },
+        { name: "Ananya Reddy", role: "Engine Specialist", year: "3rd Year", image: "/images/2.jpg" },
+        { name: "Karthik Menon", role: "Transmission Engineer", year: "2nd Year", image: "/images/3.jpg" }
+      ]
+    },
+    {
+      name: "Chassis & Suspension",
+      lead: "Sneha Gupta",
+      members: [
+        { name: "Sneha Gupta", role: "Subsystem Lead", year: "4th Year", image: "/images/4.jpg" },
+        { name: "Rohan Joshi", role: "Chassis Designer", year: "3rd Year", image: "/images/5.jpg" },
+        { name: "Meera Shah", role: "Suspension Engineer", year: "3rd Year", image: "/images/6.jpg" }
+      ]
+    },
+    {
+      name: "Electronics & Controls",
+      lead: "Aditya Verma",
+      members: [
+        { name: "Aditya Verma", role: "Subsystem Lead", year: "4th Year", image: "/images/1.jpg" },
+        { name: "Kavya Nair", role: "Control Systems", year: "3rd Year", image: "/images/2.jpg" },
+        { name: "Harsh Agarwal", role: "Data Acquisition", year: "2nd Year", image: "/images/3.jpg" }
+      ]
+    },
+    {
+      name: "Aerodynamics",
+      lead: "Ishaan Kapoor",
+      members: [
+        { name: "Ishaan Kapoor", role: "Subsystem Lead", year: "3rd Year", image: "/images/4.jpg" },
+        { name: "Riya Bansal", role: "CFD Analyst", year: "3rd Year", image: "/images/5.jpg" },
+        { name: "Aryan Malhotra", role: "Wind Tunnel Specialist", year: "2nd Year", image: "/images/6.jpg" }
+      ]
+    }
+  ],
+  stats: [
+    { number: "25+", label: "Active Members" },
+    { number: "8", label: "Departments" },
+    { number: "4", label: "Subsystems" },
+    { number: "3", label: "Years Experience" }
+  ]
+};
+---
+
+<section class="team-section" data-animate-team>
+  <div class="team-content">
+    <!-- Hero Section -->
+    <div class="team-hero" data-animate-hero>
+      <Title text="OUR TEAM" class="team-main-title" />
+      <h1 class="hero-title">The Minds Behind the Machine</h1>
+      <p class="hero-description">
+        Meet the passionate engineers, designers, and innovators who bring our racing dreams to life. 
+        Each member contributes their unique expertise to create something extraordinary.
+      </p>
+    </div>
+
+
+    <!-- Leadership Section -->
+    <div class="leadership-section" data-animate-leadership>
+      <h2 class="section-title">Leadership Team</h2>
+      <div class="leadership-grid">
+        {teamData.leadership.map((leader, index) => (
+          <div class="leader-card" data-animate-leader style={`--delay: ${index * 0.2}`}>
+            <div class="leader-image">
+              <img src={leader.image} alt={leader.name} loading="lazy" />
+              <div class="image-overlay">
+                <div class="leader-role">{leader.role}</div>
+              </div>
+            </div>
+            <div class="leader-info">
+              <h3 class="leader-name">{leader.name}</h3>
+              <p class="leader-department">{leader.department}</p>
+              <p class="leader-year">{leader.year}</p>
+              <p class="leader-bio">{leader.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Subsystems Section -->
+    <div class="subsystems-section" data-animate-subsystems>
+      <h2 class="section-title">Technical Subsystems</h2>
+      <div class="subsystems-grid">
+        {teamData.subsystems.map((subsystem, index) => (
+          <div class="subsystem-card" data-animate-subsystem style={`--delay: ${index * 0.3}`}>
+            <div class="subsystem-header">
+              <h3 class="subsystem-name">{subsystem.name}</h3>
+              <p class="subsystem-lead">Led by {subsystem.lead}</p>
+            </div>
+            <div class="members-grid">
+              {subsystem.members.map((member, memberIndex) => (
+                <div class="member-card" data-animate-member style={`--delay: ${memberIndex * 0.1}`}>
+                  <div class="member-image">
+                    <img src={member.image} alt={member.name} loading="lazy" />
+                    <div class="member-overlay">
+                      <div class="member-year">{member.year}</div>
+                    </div>
+                  </div>
+                  <div class="member-info">
+                    <h4 class="member-name">{member.name}</h4>
+                    <p class="member-role">{member.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Join Team CTA -->
+    <div style="display: none" class="join-section invisible" data-animate-join>
+      <div class="join-content">
+        <h2 class="join-title">Ready to Race With Us?</h2>
+        <p class="join-description">
+          We're always looking for passionate individuals who want to push the boundaries 
+          of automotive engineering. Join us in building the future of racing.
+        </p>
+        <div class="join-requirements">
+          <div class="requirement-item">
+            <h4>What We Look For</h4>
+            <ul>
+              <li>Passion for motorsports and engineering</li>
+              <li>Collaborative mindset and team spirit</li>
+              <li>Willingness to learn and innovate</li>
+              <li>Commitment to excellence</li>
+            </ul>
+          </div>
+          <div class="requirement-item">
+            <h4>Open Positions</h4>
+            <ul>
+              <li>Manufacturing Engineers</li>
+              <li>CAD Designers</li>
+              <li>Electronics Engineers</li>
+              <li>Business & Marketing</li>
+            </ul>
+          </div>
+        </div>
+        <button class="join-button">Get In Touch</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .team-section {
+    font-family: Murecho;
+    background: #000;
+    color: white;
+    padding: 4rem 2rem;
+    width: 100vw;
+    min-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+  
+  .team-section.animate-in {
+    opacity: 1;
+  }
+  
+  .team-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Hero Section */
+  .team-hero {
+    text-align: center;
+    margin: 4rem 0;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease;
+  }
+  
+  .team-hero.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin: 1rem 0;
+    color: white;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Team Stats */
+  .team-stats {
+    margin-bottom: 5rem;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    transition-delay: 0.2s;
+  }
+  
+  .team-stats.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .stat-card {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.6s ease;
+    transition-delay: calc(var(--delay) + 0.4s);
+  }
+  
+  .stat-card.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 0, 0, 0.3);
+  }
+  
+  .stat-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ff0000;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Section Titles */
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: white;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff0000, transparent);
+  }
+
+  /* Leadership Section */
+  .leadership-section {
+    margin-bottom: 5rem;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    transition-delay: 0.4s;
+  }
+  
+  .leadership-section.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .leader-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    transition-delay: calc(var(--delay) + 0.6s);
+  }
+  
+  .leader-card.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .leader-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 0, 0, 0.3);
+  }
+  
+  .leader-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+  
+  .leader-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .leader-card:hover .leader-image img {
+    transform: scale(1.05);
+  }
+  
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .leader-card:hover .image-overlay {
+    transform: translateY(0);
+  }
+  
+  .leader-role {
+    color: #ff0000;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .leader-info {
+    padding: 1.5rem;
+  }
+  
+  .leader-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  
+  .leader-department {
+    color: #ff0000;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  
+  .leader-year {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .leader-bio {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Subsystems Section */
+  .subsystems-section {
+    margin-bottom: 5rem;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    transition-delay: 0.6s;
+  }
+  
+  .subsystems-section.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .subsystems-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+  
+  .subsystem-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    transition-delay: calc(var(--delay) + 0.8s);
+  }
+  
+  .subsystem-card.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .subsystem-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 0, 0, 0.2);
+  }
+  
+  .subsystem-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .subsystem-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subsystem-lead {
+    color: #ff0000;
+    font-weight: 500;
+    margin: 0;
+  }
+  
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .member-card {
+    text-align: center;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.6s ease;
+    transition-delay: calc(var(--delay) + 1s);
+  }
+  
+  .member-card.animate-in {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .member-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .member-image {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 0.8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .member-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .member-card:hover .member-overlay {
+    opacity: 1;
+  }
+  
+  .member-year {
+    color: white;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  
+  .member-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.3rem;
+  }
+  
+  .member-role {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  /* Join Section */
+  .join-section {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: all 0.8s ease;
+    transition-delay: 0.8s;
+  }
+  
+  .join-section.animate-in {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .join-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .join-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .join-requirements {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+  
+  .requirement-item h4 {
+    color: #ff0000;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .requirement-item ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .requirement-item li {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+  
+  .requirement-item li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #ff0000;
+  }
+  
+  .join-button {
+    background: linear-gradient(135deg, #ff0000, #cc0000);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .join-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 1024px) {
+    .leadership-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .subsystems-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .team-section {
+      padding: 2rem 1rem;
+    }
+    
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .leadership-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .members-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .join-requirements {
+      grid-template-columns: 1fr;
+    }
+    
+    .join-section {
+      padding: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 1.8rem;
+    }
+    
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .members-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .member-image {
+      width: 60px;
+      height: 60px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof IntersectionObserver !== 'undefined') {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target;
+            
+            if (element.hasAttribute('data-animate-team')) {
+              element.classList.add('animate-in');
+              
+              // Animate sections with staggered delays
+              const sections = [
+                '[data-animate-hero]',
+                '[data-animate-stats]',
+                '[data-animate-stat]',
+                '[data-animate-leadership]',
+                '[data-animate-leader]',
+                '[data-animate-subsystems]',
+                '[data-animate-subsystem]',
+                '[data-animate-member]',
+                '[data-animate-join]'
+              ];
+              
+              sections.forEach((selector) => {
+                const elements = element.querySelectorAll(selector);
+                elements.forEach((el) => {
+                  setTimeout(() => {
+                    el.classList.add('animate-in');
+                  }, 100);
+                });
+              });
+              
+              observer.unobserve(element);
+            }
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      const section = document.querySelector('[data-animate-team]');
+      if (section) {
+        observer.observe(section);
+      }
+    }
+  });
+</script>
