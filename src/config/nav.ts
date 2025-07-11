@@ -1,4 +1,5 @@
 import { Instagram, Facebook, type Icon as IconType, Linkedin, Youtube } from '@lucide/astro';
+import { socialLinks } from './contact';
 
 export const navItems = [
   { name: "Home", href: "/" },
@@ -15,8 +16,8 @@ type SocialItems = {
 };
 
 export const socials: SocialItems[] = [
-  { name: "Instagram", href: "https://instagram.com/aeolus_racing", icon: Instagram },
-  { name: "Facebook", href: "https://facebook.com/aeolus.racing", icon: Facebook },
-  { name: "LinkedIn", href: "https://www.linkedin.com/company/team-aeolus-racing/", icon: Linkedin },
-  { name: "Youtube", href: "https://www.youtube.com/channel/UCWKZm9_iErSXgVYuIn_Ujqg", icon: Youtube },
+  { name: "Instagram", href: socialLinks.instagram, icon: Instagram },
+  { name: "Facebook", href: socialLinks.facebook, icon: Facebook },
+  { name: "LinkedIn", href: socialLinks.linkedin, icon: Linkedin },
+  { name: "Youtube", href: socialLinks.youtube, icon: Youtube },
 ];
