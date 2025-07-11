@@ -1,52 +1,76 @@
-# Astro Starter Kit: Basics
 
-```sh
-bun create astro@latest -- --template basics
-```
+<div align="center">
+  <img src="public/logo.png" alt="Aeolus Racing Logo" width="150"/>
+  <h1>Aeolus Racing</h1>
+  <p>Official website of the IIT Hyderabad motorsport club.</p>
+  
+  <!-- Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/status-active-green.svg" alt="Status" />
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
+    <a href="https://astro.build/">
+      <img src="https://img.shields.io/badge/powered%20by-Astro-orange.svg?style=flat&logo=astro" alt="Powered by Astro">
+    </a>
+  </p>
+</div>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🏎️ About Us
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+This is the official website for **Aeolus Racing**, the motorsport club of IIT Hyderabad. We design, build, and race high-performance formula-style race cars for competitions like Formula Bharat. This website showcases our team, our cars, our valued sponsors, and our journey.
 
-## 🚀 Project Structure
+## 🛠️ Tech Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- [Astro](https://astro.build/) - The web framework for building fast, content-driven websites.
+- [Svelte](https://svelte.dev/) - Cybernetically enhanced web apps.
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for rapid UI development.
+- [Bun](https.bun.sh) - A fast all-in-one JavaScript runtime.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## 🚀 Getting Started
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+Make sure you have [Bun](https://bun.sh/docs/installation) installed on your machine.
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/your-username/aeolus-racing.git
+    cd aeolus-racing
+    ```
+2.  **Install dependencies:**
+    ```bash
+    bun install
+    ```
+3.  **Start the development server:**
+    ```bash
+    bun dev
+    ```
+    The website will be accessible at `http://localhost:4321`.
 
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+| Command         | Action                                      |
+| :-------------- | :------------------------------------------ |
+| `bun install`   | Installs dependencies                       |
+| `bun dev`       | Starts local dev server at `localhost:4321` |
+| `bun build`     | Build your production site to `./dist/`     |
+| `bun preview`   | Preview your build locally, before deploying|
 
-## 👀 Want to learn more?
+## 📜 License
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Distributed under the MIT License. See `LICENSE` for more information.
+
+## 📱 Connect with Us
+
+- **Website:** [iith-racing.com](https_iith-racing.com)
+- **Instagram:** [@aeolus_racing](https_instagram.com/aeolus_racing)
+- **LinkedIn:** [Aeolus Racing](https_linkedin.com/company/aeolus-racing)
+- **Email:** [contact@iith-racing.com](mailto_contact@iith-racing.com)
+
