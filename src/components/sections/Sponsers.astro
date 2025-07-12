@@ -1,24 +1,32 @@
 ---
 import Button from "../ui/Button.astro";
 import Title from '../ui/Title.astro';
+import SponsorList from './SponsorList.astro';
+
+const sponsors = [
+  {
+    name: "Petronas",
+    logo: "sponsors/petronas.webp",
+    alt: "Petronas Logo"
+  },
+  {
+    name: "Mastercard", 
+    logo: "sponsors/mastercard.webp",
+    alt: "Mastercard Logo"
+  },
+  {
+    name: "Google",
+    logo: "sponsors/google.webp", 
+    alt: "Google Logo"
+  }
+];
 ---
 
 <section id="sponsors" class="sponsors-section" data-animate-sponsors>
   <div class="sponsors-content">
       <Title text="OUR SPONSORS" class="custom-spacing" />
-    <div class="sponsors-grid" data-animate-sponsors-grid>
-      <div class="sponsor-item" data-animate-sponsor style="--delay: 0">
-        <img src="sponsors/petronas.webp" alt="Petronas" class="sponsor-logo petronas" loading="lazy" decoding="async" />
-      </div>
-      <div class="sponsor-item" data-animate-sponsor style="--delay: 1">
-        <img src="sponsors/mastercard.webp" alt="Mastercard" class="sponsor-logo mastercard" loading="lazy" decoding="async" />
-      </div>
-      <div class="sponsor-item" data-animate-sponsor style="--delay: 2">
-        <img src="sponsors/google.webp" alt="Google" class="sponsor-logo google" loading="lazy" decoding="async" />
-      </div>
-    </div>
-    
-    <Button variant="outline">Become a Sponsor</Button>
+      <SponsorList sponsors={sponsors} />
+      <Button variant="outline">Become a Sponsor</Button>
   </div>
 </section>
 

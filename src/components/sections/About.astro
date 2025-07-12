@@ -1,3 +1,7 @@
+---
+import Title from "../ui/Title.astro";
+---
+
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         if (typeof IntersectionObserver !== "undefined") {
@@ -191,7 +195,7 @@
 </section>
 <section class="mission-section" data-animate-mission>
     <div class="mission-content">
-        <h2 class="mission-title" data-animate-title>OUR MISSION</h2>
+        <Title text="OUR MISSION" />
         <p class="mission-text" data-animate-text>
             Our mission is to build a thriving Formula Student culture at IIT
             Hyderabad, pushing the limits of performance and design through

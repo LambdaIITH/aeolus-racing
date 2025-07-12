@@ -27,40 +27,6 @@
   justify-content: center;
 }
 
-.sponsors-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4rem;
-  margin: 4rem 0;
-  flex-wrap: wrap;
-}
-
-.sponsor-item {
-  transform: translateY(30px) scale(0.8);
-  opacity: 0;
-  width: 15rem;
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transition-delay: calc(var(--delay) * 0.2s);
-}
-
-.sponsor-item.animate-in {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-}
-
-.sponsor-logo {
-  height: 10rem;
-  object-fit: contain;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.sponsor-logo:hover {
-  transform: scale(1.1);
-}
-
-
 .become-sponsor-btn {
   background: transparent;
   border: 2px solid white;
@@ -115,16 +81,6 @@
   .sponsors-title {
     font-size: 2rem;
     margin-bottom: 3rem;
-  }
-  
-  .sponsors-grid {
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-  
-  .sponsor-logo {
-    height: 50px;
-    max-width: 120px;
   }
 }
 
