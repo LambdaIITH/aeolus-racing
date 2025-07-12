@@ -8,15 +8,14 @@ import { navItems, socials } from "../../config/nav";
 </style>
 
 <header>
-    <div class="logo">
+    <a class="logo" href="/">
         <img src="/logo.webp" alt="Aeolus Racing Logo" loading="lazy" decoding="async" />
         <div class="logo-text">
             <strong>Aeolus Racing</strong><br />
             <small>IITH MOTORSPORT CLUB</small>
         </div>
-    </div>
+    </a>
 
-    <!-- Desktop Navigation -->
     <nav class="nav-container">
         <div class="nav-links">
             {navItems.map((item) => <a href={item.href}>{item.name}</a>)}
