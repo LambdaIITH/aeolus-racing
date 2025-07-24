@@ -21,6 +21,22 @@ const teamData = {
       year: "3rd Year",
       image: "/images/team/Adil_anwar.jpg",
       bio: "Overseeing technical development and ensuring engineering excellence across all subsystems."
+    },
+    {
+      name: "Vinay Kumar Maddila",
+      role: "Team Captain",
+      department: "Mechanical Engineering",
+      year : "Passed Out",
+      image : "images/team/vinay_kumar.jpg",
+      bio : "Handles Entire team"
+    },
+    {
+      name: "Satyavada Sri Harini",
+      role: "Sponsorship Head",
+      department: "Mechanical Engineering",
+      year : "3rd Year",
+      image : "images/team/Harini_photo.jpeg",
+      bio : "Head of Sponsorship team"
     }
   ],
   subsystems: [
@@ -29,26 +45,31 @@ const teamData = {
       lead: "Soumyajit Maji",
       members: [
         { name: "Abhijit Kashyap", role: "Powertrain - Electrical", year: "3rd Year", image: "/images/team/AbhijitKashyap_Photo.jpg" },
-        { name: "Abhijith Raj", role: "", year: "3rd Year", image: "/images/team/Abhijith.png" },
-        { name: "Soumyajit Maji", role: "Handling everything", year: "3rd Year", image: "/images/team/Soumyajit.jpg" }
+        { name: "Abhijith Raj", role: "Powertrain - Fuel Tank", year: "3rd Year", image: "/images/team/Abhijith.png" },
+        { name: "Soumyajit Maji", role: "Powertrain - Head,Engine and Cooling system", year: "3rd Year", image: "/images/team/Soumyajit.jpg" },
+        { name: "Nevil C Prince", role: "Powertrain - Exhaust & Fuel System", year: "3rd Year", image: "/images/team/NevilPrince.jpg"},
+        { name: "Taha Mohiuddin", role: "Powertrain - Drivetrain", year: "3rd Year", image: "/images/team/TahaMohiuddin.jpg"}
       ]
     },
     {
       name: "Chassis & Suspension",
-      lead: "Vishnu Anand",
+      lead: "Kaivalya Mase",
       members: [
-        { name: "Kaivalya", role: "Engineer", year: "3rd Year", image: "/images/team/Kaivalya.jpeg" },
-        { name: "Vishnu Anand", role: "Chassis- Chassis Design and Manufacturing", year: "3rd Year", image: "/images/team/Vishnu_anand.jpg" },
-        { name: "Ishwarya", role: "Chassis-design", year: "3rd Year", image: "/images/team/Ishwarya A-pic.jpg" },
-        { name: "Arnav Govindu", role: "Chassis", year: "3rd Year", image: "/images/team/Arnav.JPG" }
+        { name: "Kaivalya", role: "Head", year: "3rd Year", image: "/images/team/Kaivalya.png" },
+        { name: "Vishnu Anand", role: "Chassis - Design and Manufacturing", year: "3rd Year", image: "/images/team/Vishnu_anand.jpg" },
+        { name: "Ishwarya", role: "Chassis - Design and Firewall", year: "3rd Year", image: "/images/team/Ishwarya.jpg" },
+        { name: "Arnav Govindu", role: "Chassis - Design and Manufacturing ", year: "3rd Year", image: "/images/team/Arnav.JPG" }
       ]
     },
     {
       name: "Vehicle Dynamics",
-      lead: "Ashuthosh Shivaraj",
+      lead: "Ashish Sam",
       members: [
         { name: "Ashuthosh Shivaraj", role: "Team Manager, VD Brake pedal assembly", year: "3rd Year", image: "/images/team/Ashuthosh.jpg" },
-        { name: "Aditya Gupta", role: "Vehicle Dynamics - Member", year: "3rd Year", image: "/images/team/Aditya.jpg" }
+        { name: "Aditya Gupta", role: "Vehicle Dynamics - Member", year: "3rd Year", image: "/images/team/Aditya.jpg" },
+        { name: "Adurty Sanjay Raju", role: "Vehicle Dynamics - Steering System", year: "3rd Year", image: "/images/team/AdurtySanjay.jpg"},
+        { name: "Sreekar Reddy", role: "Vehicle Dynamics - Brakes", year: "3rd Year", image: "/images/team/SreekarReddy.jpg"},
+        { name: "Ashish Sam", role: "Vehicle Dynamics - Suspension", year: "3rd Year", image: "/images/team/AshishSam.jpg"}
       ]
     }
   ],
@@ -92,6 +113,7 @@ const teamData = {
         </div>
       </div>
     </div>
+
     <!-- Leadership Section -->
     <div class="leadership-section" data-animate-leadership>
       <h2 class="section-title">Leadership Team</h2>
@@ -127,19 +149,17 @@ const teamData = {
             </div>
             <div class="members-grid">
               {subsystem.members.map((member, memberIndex) => (
-                <div class="member-card" data-animate-member style={`--delay: ${memberIndex * 0.1}`}>
-                  <div class="member-image">
-                    <img src={member.image} alt={member.name} loading="lazy" />
-                    <div class="member-overlay">
-                      <div class="member-year">{member.year}</div>
-                    </div>
-                  </div>
-                  <div class="member-info">
-                    <h4 class="member-name">{member.name}</h4>
-                    <p class="member-role">{member.role}</p>
-                  </div>
-                </div>
-              ))}
+  <div class="member-card" data-animate-member style={`--delay: ${memberIndex * 0.1}`}>
+    <div class="member-image">
+      <img src={member.image} alt={member.name} loading="lazy" />
+    </div>
+    <div class="member-info">
+      <h4 class="member-name">{member.name}</h4>
+      <p class="member-year">{member.year}</p>
+      <p class="member-role">{member.role.replace(/^[^–-]*[–-]\s*/, '')}</p>
+    </div>
+  </div>
+))}
             </div>
           </div>
         ))}
@@ -185,7 +205,6 @@ const teamData = {
 </style>
 </Layout>
 
-
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     if (typeof IntersectionObserver !== 'undefined') {
@@ -193,11 +212,10 @@ const teamData = {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const element = entry.target;
-            
+
             if (element.hasAttribute('data-animate-team')) {
               element.classList.add('animate-in');
-              
-              // Animate sections with staggered delays
+
               const sections = [
                 '[data-animate-hero]',
                 '[data-animate-stats]',
@@ -209,7 +227,7 @@ const teamData = {
                 '[data-animate-member]',
                 '[data-animate-join]'
               ];
-              
+
               sections.forEach((selector) => {
                 const elements = element.querySelectorAll(selector);
                 elements.forEach((el) => {
@@ -218,7 +236,7 @@ const teamData = {
                   }, 100);
                 });
               });
-              
+
               observer.unobserve(element);
             }
           }
