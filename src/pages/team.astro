@@ -69,7 +69,8 @@ const teamData = {
         { name: "Aditya Gupta", role: "Vehicle Dynamics - Member", year: "3rd Year", image: "/images/team/Aditya.jpg" },
         { name: "Adurty Sanjay Raju", role: "Vehicle Dynamics - Steering System", year: "3rd Year", image: "/images/team/AdurtySanjay.jpg"},
         { name: "Sreekar Reddy", role: "Vehicle Dynamics - Brakes", year: "3rd Year", image: "/images/team/SreekarReddy.jpg"},
-        { name: "Ashish Sam", role: "Vehicle Dynamics - Suspension", year: "3rd Year", image: "/images/team/AshishSam.jpg"}
+        { name: "Ashish Sam", role: "Vehicle Dynamics - Suspension", year: "3rd Year", image: "/images/team/AshishSam.jpg"},
+        { name: "Rohith Erelli", role:"Vehicle Dynamics - Steering", year: "4th year", image: "/images/team/rohiterelli.jpeg"}
       ]
     }
   ],
@@ -120,12 +121,12 @@ const teamData = {
       <div class="leadership-grid">
         {teamData.leadership.map((leader, index) => (
           <div class="leader-card" data-animate-leader style={`--delay: ${index * 0.2}`}>
-            <div class="leader-image">
-              <img src={leader.image} alt={leader.name} loading="lazy" />
-              <div class="image-overlay">
-                <div class="leader-role">{leader.role}</div>
-              </div>
-            </div>
+            <div class={`leader-image ${leader.name === "Vinay Kumar Maddila" ? "shift-vinay" : ""}`}>
+  <img src={leader.image} alt={leader.name} loading="lazy" />
+  <div class="image-overlay">
+    <div class="leader-role">{leader.role}</div>
+  </div>
+</div>
             <div class="leader-info">
               <h3 class="leader-name">{leader.name}</h3>
               <p class="leader-department">{leader.department}</p>
