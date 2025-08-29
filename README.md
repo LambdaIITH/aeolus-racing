@@ -69,7 +69,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📱 Connect with Us
 
-- **Website:** [iith-racing.com](https://aeolus-racing.vercel.app)
+- **Website:** [aeolus.iith.ac.in](https://aeolus.iith.ac.in)
 - **Instagram:** [@aeolus_racing](https://instagram.com/aeolus_racing)
 - **LinkedIn:** [Aeolus Racing](https://linkedin.com/company/team-aeolus-racing)
 - **Email:** [contact@iith-racing.com](mailto:saebaja@iith.ac.in)
