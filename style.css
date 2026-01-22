@@ -1,0 +1,518 @@
+/* --- RESET & BASICS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #050505; /* Deep Black */
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Typography Overrides */
+h1, h2, h3, .logo {
+    font-family: 'Montserrat', sans-serif; /* Tall, condensed font suitable for racing */
+    text-transform: uppercase;
+}
+
+/* Color Variables for easy tweaking */
+:root {
+    --primary-orange: #FF5900;
+    --accent-yellow: ##FF9500;
+    --dark-grey: #1a1a1a;
+    --glass-black: rgba(0, 0, 0, 0.7);
+}
+
+.highlight { color: var(--primary-orange); }
+.text-orange { color: var(--primary-orange); }
+.text-yellow { color: var(--accent-yellow); }
+
+/* --- NAVIGATION --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-yellow);
+}
+
+/* --- HERO SECTION (VIDEO BG) --- */
+.hero {
+    padding-left: 3%;
+    padding-top: 35%;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    text-align: left;
+    overflow: hidden;
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover; /* Ensures video covers screen */
+}
+
+/* Dark overlay to make text readable over video */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.05); /* Adjust opacity for video brightness */
+    z-index: -1;
+    /* Adding a scanline effect pattern */
+    background-image: repeating-linear-gradient(
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.4) 3px
+    );
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    line-height: 1;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 69, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--primary-orange);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid var(--primary-orange);
+    transition: all 0.3s ease;
+    clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%); /* Racing shape */
+}
+
+.cta-button:hover {
+    background: transparent;
+    color: var(--primary-orange);
+    box-shadow: 0 0 15px var(--primary-orange);
+}
+
+/* --- SECTIONS --- */
+.section-dark {
+    padding: 80px 20px;
+    background: var(--dark-grey);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    border-left: 5px solid var(--accent-yellow);
+    padding-left: 20px;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #000;
+    padding: 30px;
+    border-bottom: 3px solid var(--primary-orange);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    color: var(--accent-yellow);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+/* --- BANNER STRIPE --- */
+.banner-stripe {
+    background: linear-gradient(45deg, var(--primary-orange), #FF5900);
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    text-align: center;
+    color: white;
+}
+
+.stat-box .number {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stat-box .label {
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000;
+    border-top: 1px solid #333;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 3.5rem; }
+    .navbar { padding: 20px; flex-direction: column; }
+    .nav-links { margin-top: 20px; font-size: 0.9rem; }
+}
+/* --- NEW ADDITIONS FOR SUB-PAGES --- */
+
+/* Generic Page Header (Non-Video) */
+.page-header {
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('headerbg.png');
+    background-size: cover;
+    background-position: center;
+    padding: 150px 20px 80px;
+    text-align: center;
+    border-bottom: 4px solid var(--primary-orange);
+}
+
+.page-header h1 {
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 0 10px var(--primary-orange);
+}
+
+/* Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.team-member {
+    background: #111;
+    border: 1px solid #333;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.team-member:hover {
+    border-color: var(--accent-yellow);
+    transform: scale(1.02);
+}
+
+.member-img {
+    width: 100%;
+    height: 400px;
+    background-color: #222; /* Placeholder color */
+    object-fit: cover;
+    border-bottom: 2px solid var(--primary-orange);
+}
+
+.member-info {
+    padding: 20px;
+}
+
+.member-info h3 {
+    color: white;
+    font-size: 1.5rem;
+}
+
+.member-info p {
+    color: var(--primary-orange);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Car Specs Table */
+.specs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+}
+
+.car-image-large {
+    flex: 1 1 500px;
+    width: 100%;
+    border: 1px solid #333;
+}
+
+.tech-table {
+    flex: 1 1 400px;
+    width: 100%;
+    border-collapse: collapse;
+    color: #ddd;
+}
+
+.tech-table td {
+    padding: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.tech-table .spec-label {
+    font-weight: bold;
+    color: var(--primary-orange);
+    width: 40%;
+}
+
+.tech-table .spec-val {
+    font-family: 'Teko', sans-serif;
+    font-size: 1.4rem;
+    color: white;
+}
+
+/* Contact Form */
+.contact-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: #111;
+    border: none;
+    border-bottom: 2px solid #333;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    transition: 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-bottom-color: var(--accent-yellow);
+    background: #1a1a1a;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #888;
+    font-size: 0.9rem;
+}
+/* --- GALLERY STYLES --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(transparent, black);
+    transition: bottom 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    bottom: 0;
+}
+
+/* --- ABOUT US STYLES --- */
+.about-split {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.about-img {
+    flex: 1;
+    border-right: 5px solid var(--primary-orange);
+    border-bottom: 5px solid var(--accent-yellow);
+}
+
+.about-img img {
+    width: 100%;
+    display: block;
+    filter: grayscale(100%); /* Cool black and white effect */
+    transition: filter 0.3s;
+}
+
+.about-img:hover img {
+    filter: grayscale(0%); /* Color on hover */
+}
+
+@media (max-width: 768px) {
+    .about-split { flex-direction: column; }
+}
+/* --- REDONE CONTACT PAGE STYLES --- */
+.contact-split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    margin-top: 20px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form-container {
+    flex: 1.5; /* Makes the form slightly wider than the info */
+    min-width: 300px;
+    background: #0a0a0a;
+    padding: 40px;
+    border: 1px solid #333;
+}
+
+/* Info Boxes (Phone/Email cards) */
+.info-box {
+    background: #111;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--primary-orange);
+    transition: transform 0.3s ease;
+}
+
+.info-box:hover {
+    transform: translateX(10px); /* Slides right slightly on hover */
+    background: #161616;
+}
+
+.info-box h3 {
+    color: var(--accent-yellow);
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.info-box p {
+    color: white;
+    font-size: 1.3rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.info-box .sub-text {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Social Media Row */
+.social-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.social-btn {
+    padding: 10px 20px;
+    border: 1px solid #333;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.social-btn:hover {
+    background: var(--primary-orange);
+    border-color: var(--primary-orange);
+}
